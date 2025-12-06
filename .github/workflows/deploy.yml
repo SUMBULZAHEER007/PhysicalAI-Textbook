@@ -17,21 +17,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'physical-ai-book/package-lock.json'
 
       - name: Install dependencies
-        run: |
-          cd physical-ai-book
-          npm ci
+        run: cd physical-ai-book && npm ci
 
       - name: Build Docusaurus site
-        run: |
-          cd physical-ai-book
-          npm run build
+        run: cd physical-ai-book && npm run build
+        env:
+          NODE_ENV: production
+
+      - name: List build output
+        run: ls -la physical-ai-book/build/
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
@@ -39,3 +44,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./physical-ai-book/build
           cname: false
+          force_orphan: true
