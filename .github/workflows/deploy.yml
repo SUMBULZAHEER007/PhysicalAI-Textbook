@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: cd physical-ai-book && npm ci --prefer-offline
 
+      - name: Verify docs folder
+        run: ls -la physical-ai-book/docs/
+
       - name: Build static site
         run: cd physical-ai-book && npm run build
 
@@ -39,6 +42,7 @@ jobs:
           rm -rf gh-pages-dir/*
           cp -r physical-ai-book/build/* gh-pages-dir/
           cp physical-ai-book/build/.nojekyll gh-pages-dir/ || true
+          ls -la gh-pages-dir/docs/ || echo "No docs folder in build"
 
       - name: Configure git
         run: |
