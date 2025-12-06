@@ -1,0 +1,63 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/PhysicalAI-Textbook/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/PhysicalAI-Textbook/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "capstone",
+              "path": "/PhysicalAI-Textbook/docs/capstone",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "foundations",
+              "path": "/PhysicalAI-Textbook/docs/foundations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "gazebo",
+              "path": "/PhysicalAI-Textbook/docs/gazebo",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/PhysicalAI-Textbook/docs/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "robotics",
+              "path": "/PhysicalAI-Textbook/docs/robotics",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ros2",
+              "path": "/PhysicalAI-Textbook/docs/ros2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "vision",
+              "path": "/PhysicalAI-Textbook/docs/vision",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/PhysicalAI-Textbook/docs/foundations",
+                "label": "foundations"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

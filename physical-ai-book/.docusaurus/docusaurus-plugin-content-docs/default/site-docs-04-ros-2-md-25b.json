@@ -1,0 +1,33 @@
+{
+  "id": "ros2",
+  "title": "ROS 2 Middleware",
+  "description": "Building robot applications with ROS 2",
+  "source": "@site/docs/04-ros2.md",
+  "sourceDirName": ".",
+  "slug": "/ros2",
+  "permalink": "/PhysicalAI-Textbook/docs/ros2",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SUMBULZAHEER007/PhysicalAI-Textbook/tree/main/physical-ai-book/docs/04-ros2.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "ROS 2 Middleware",
+    "description": "Building robot applications with ROS 2",
+    "keywords": [
+      "ros2",
+      "middleware",
+      "robotics"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Robot Simulation with Gazebo",
+    "permalink": "/PhysicalAI-Textbook/docs/gazebo"
+  },
+  "next": {
+    "title": "Robot Vision and Perception",
+    "permalink": "/PhysicalAI-Textbook/docs/vision"
+  }
+}

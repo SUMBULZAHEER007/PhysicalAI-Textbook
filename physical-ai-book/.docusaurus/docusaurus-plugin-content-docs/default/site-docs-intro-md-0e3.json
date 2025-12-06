@@ -1,0 +1,23 @@
+{
+  "id": "intro",
+  "title": "Physical AI Textbook",
+  "description": "An AI-native interactive textbook on Physical AI & Humanoid Robotics.",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/PhysicalAI-Textbook/docs/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SUMBULZAHEER007/PhysicalAI-Textbook/tree/main/physical-ai-book/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "slug": "/",
+    "title": "Physical AI Textbook"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Capstone Project and System Integration",
+    "permalink": "/PhysicalAI-Textbook/docs/capstone"
+  }
+}

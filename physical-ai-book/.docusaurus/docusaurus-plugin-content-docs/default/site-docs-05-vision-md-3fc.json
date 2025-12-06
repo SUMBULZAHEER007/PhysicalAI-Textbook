@@ -1,0 +1,33 @@
+{
+  "id": "vision",
+  "title": "Robot Vision and Perception",
+  "description": "Computer vision for robotics applications",
+  "source": "@site/docs/05-vision.md",
+  "sourceDirName": ".",
+  "slug": "/vision",
+  "permalink": "/PhysicalAI-Textbook/docs/vision",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SUMBULZAHEER007/PhysicalAI-Textbook/tree/main/physical-ai-book/docs/05-vision.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Robot Vision and Perception",
+    "description": "Computer vision for robotics applications",
+    "keywords": [
+      "vision",
+      "perception",
+      "robotics"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ROS 2 Middleware",
+    "permalink": "/PhysicalAI-Textbook/docs/ros2"
+  },
+  "next": {
+    "title": "Capstone Project and System Integration",
+    "permalink": "/PhysicalAI-Textbook/docs/capstone"
+  }
+}

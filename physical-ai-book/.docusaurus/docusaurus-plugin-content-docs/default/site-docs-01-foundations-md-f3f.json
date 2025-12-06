@@ -1,0 +1,29 @@
+{
+  "id": "foundations",
+  "title": "Physical AI Foundations",
+  "description": "Foundations of physical artificial intelligence and embodied robotics",
+  "source": "@site/docs/01-foundations.md",
+  "sourceDirName": ".",
+  "slug": "/foundations",
+  "permalink": "/PhysicalAI-Textbook/docs/foundations",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SUMBULZAHEER007/PhysicalAI-Textbook/tree/main/physical-ai-book/docs/01-foundations.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Physical AI Foundations",
+    "description": "Foundations of physical artificial intelligence and embodied robotics",
+    "keywords": [
+      "physical ai",
+      "robotics",
+      "embodiment"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Humanoid Robot Design",
+    "permalink": "/PhysicalAI-Textbook/docs/robotics"
+  }
+}
