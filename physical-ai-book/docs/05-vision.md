@@ -1,99 +1,162 @@
 ---
-title: Robot Vision & Perception
-description: Computer vision for robotics
+title: Robot Vision and Perception
+description: Computer vision for robotics applications
+keywords: [vision, perception, robotics]
 ---
 
-# Module 5: Robot Vision & Perception
+# Robot Vision and Perception
 
-## Overview
+Vision is critical for humanoid robots. This module covers camera systems, object detection, and scene understanding.
 
-Vision is one of the most important sensors for humanoid robots. This module covers camera systems, object detection, and semantic understanding.
-
----
-
-## Section 1: Camera Systems
+## Camera Types
 
 ### RGB Cameras
 
-```python
-import cv2
-
-def capture_frame():
-    cap = cv2.VideoCapture(0)
-    ret, frame = cap.read()
-    return frame
-
-# Frame dimensions
-frame = capture_frame()
-height, width, channels = frame.shape
-print(f"Resolution: {width}x{height}, Channels: {channels}")
-```
+Standard color cameras for visual perception:
+- Resolution: 640x480 to 4K
+- Frame Rate: 30-120 Hz
+- Use: Object detection, semantic segmentation, visual tracking
 
 ### Depth Cameras (RGB-D)
 
-```python
-import pyrealsense2 as rs
+Cameras providing both color and depth:
+- Examples: Intel RealSense, Microsoft Kinect
+- Depth Range: 0.1 to 10 meters typical
+- Use: 3D reconstruction, grasping, obstacle avoidance
 
-# Intel RealSense D435
-pipeline = rs.pipeline()
-config = rs.config()
-config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
-config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+### Thermal Cameras
 
-pipeline.start(config)
-frames = pipeline.wait_for_frames()
-depth_frame = frames.get_depth_frame()
-color_frame = frames.get_color_frame()
-```
+Cameras detecting infrared radiation:
+- Temperature Range: 10-60°C typical
+- Use: People detection, heat abnormality detection
+
+## Object Detection
+
+Object detection identifies and locates objects in images:
+
+### Traditional Approaches
+
+- Haar Cascades: Fast but limited accuracy
+- HOG + SVM: Good speed/accuracy balance
+- Sliding Window: Exhaustive search (slow)
+
+### Deep Learning Approaches
+
+- YOLO: Real-time detection (fast)
+- Faster R-CNN: High accuracy detection
+- SSD: Balance of speed and accuracy
+- EfficientNet: Efficient backbone network
+
+## Semantic Segmentation
+
+Semantic segmentation assigns class labels to every pixel:
+- Scene Understanding: What is present in the scene?
+- Navigation: Where can the robot walk?
+- Manipulation: Where are the graspable objects?
+- Safety: Identify hazards and obstacles
+
+Common Models:
+- DeepLabV3: High-quality segmentation
+- U-Net: Effective for specialized imaging
+- SegFormer: Efficient segmentation
+
+## Instance Segmentation
+
+Combines object detection with pixel-level segmentation:
+- Identifies individual object instances
+- Provides precise object boundaries
+- Needed for manipulation of multiple objects
+
+## 3D Vision
+
+Converting 2D images to 3D understanding:
+
+### Approaches
+
+- Stereo Vision: Two cameras compute depth by triangulation
+- Structure from Motion: Reconstruct 3D from multiple views
+- Depth Sensors: Direct depth measurement
+- Multi-view Geometry: Reconstruct from many viewpoints
+
+### Applications
+
+- Obstacle avoidance
+- Object manipulation
+- Scene reconstruction
+- Navigation mapping
+
+## Feature Detection
+
+Finding correspondences between images:
+- SIFT: Scale-Invariant Feature Transform
+- SURF: Speeded Up Robust Features
+- ORB: Oriented FAST and Rotated BRIEF
+
+Uses:
+- Visual odometry (estimate robot motion)
+- Loop closure (recognize revisited locations)
+- Image registration (align multiple images)
+
+## Visual Servoing
+
+Using vision feedback to control robot motion:
+
+**Eye-in-Hand:**
+- Camera on end-effector
+- Direct end-effector view
+- Effective for manipulation
+
+**Eye-to-Hand:**
+- Fixed camera location
+- Broader field of view
+- Better for whole-body control
+
+## Integration with ROS 2
+
+Vision nodes communicate via ROS 2:
+- Camera Driver: Captures images
+- Object Detector: Identifies objects
+- Motion Planner: Plans based on detection
+- Controller: Executes motion
+
+Each component is a separate ROS 2 node with defined interfaces.
+
+## Real-time Considerations
+
+**Performance Requirements:**
+- Frame Rate: 30-120 Hz for interactive tasks
+- Latency: Less than 100 ms for responsive control
+- GPU: Needed for deep learning at real-time rates
+
+**Computational Efficiency:**
+- Embedded systems: Use lightweight models (MobileNet)
+- Desktop: Full-size models (ResNet, VGG)
+- Edge devices: Model quantization and pruning
+
+## Key Computer Vision Techniques
+
+1. Image Processing: Filtering, edge detection, morphology
+2. Feature Extraction: Key points, descriptors
+3. Segmentation: Separating objects from background
+4. Tracking: Following objects across frames
+5. 3D Reconstruction: Building 3D models from images
+
+## Challenges in Robot Vision
+
+- Lighting variations: Shadows, reflections, backlighting
+- Occlusion: Objects blocked by other objects
+- Motion blur: Fast robot motion
+- Real-time constraints: Limited computational budget
+- Variability: Different object appearances
+
+## Solutions
+
+- Multi-sensor fusion: Combine camera, depth, lidar
+- Robust algorithms: Handle occlusion and outliers
+- Hardware acceleration: GPU for deep learning
+- Model adaptation: Fine-tune on robot-specific data
+- Simplification: Don't solve harder problems than needed
 
 ---
 
-## Section 2: Object Detection
-
-### Using YOLO
-
-```python
-import cv2
-from ultralytics import YOLO
-
-model = YOLO('yolov8n.pt')  # Nano model
-
-def detect_objects(frame):
-    results = model(frame)
-    for r in results:
-        for box in r.boxes:
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-    return frame
-```
-
----
-
-## Section 3: Semantic Segmentation
-
-```python
-# Semantic segmentation with DeepLabV3
-from torchvision.models.segmentation import deeplabv3_resnet50
-import torch
-
-model = deeplabv3_resnet50(pretrained=True)
-model.eval()
-
-# Process image
-input_tensor = preprocess(frame)
-with torch.no_grad():
-    output = model(input_tensor)
-    segmentation_map = output['out'].argmax(1)
-```
-
----
-
-## Key Takeaways
-
-✅ Multiple camera types for different tasks  
-✅ Deep learning enables robust detection  
-✅ Semantic segmentation for scene understanding  
-
----
-
-[Previous: ROS 2 ←](/docs/04-ros2)
+**Next:** Bring everything together in the capstone project.

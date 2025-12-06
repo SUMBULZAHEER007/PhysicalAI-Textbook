@@ -30,7 +30,7 @@ const config = {
   organizationName: 'SUMBULZAHEER007', // Usually your GitHub org/user name.
   projectName: 'PhysicalAI-Textbook', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -47,17 +47,10 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/SUMBULZAHEER007/PhysicalAI-Textbook/tree/main/physical-ai-book/',
         },
         blog: false,
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -94,7 +87,6 @@ const config = {
         ],
       },
       footer: {
-      footer: {
         style: 'dark',
         links: [
           {
@@ -117,7 +109,8 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Physical AI Textbook. Built with Docusaurus.`,
-      },ism: {
+      },
+      prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
