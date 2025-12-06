@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy
 
 on:
   push:
@@ -9,28 +9,49 @@ permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
       - name: Install dependencies
-        run: |
-          cd physical-ai-book
-          npm ci
+        run: cd physical-ai-book && npm ci --prefer-offline
 
-      - name: Build website
-        run: |
-          cd physical-ai-book
-          npm run build
+      - name: Build static site
+        run: cd physical-ai-book && npm run build
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./physical-ai-book/build
+          ref: gh-pages
+          path: gh-pages-dir
+
+      - name: Copy build to gh-pages
+        run: |
+          rm -rf gh-pages-dir/*
+          cp -r physical-ai-book/build/* gh-pages-dir/
+          cp physical-ai-book/build/.nojekyll gh-pages-dir/ || true
+
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push to gh-pages
+        run: |
+          cd gh-pages-dir
+          git add -A
+          if git diff --quiet --cached; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy from GitHub Actions"
+            git push
+          fi
