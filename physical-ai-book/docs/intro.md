@@ -11,12 +11,12 @@ An AI-native interactive textbook on Physical AI & Humanoid Robotics.
 
 Explore our chapters:
 
-- **[Foundations](/docs/01-foundations)** - Physical AI Foundations
-- **[Robotics](/docs/02-robotics)** - Robotics Fundamentals
-- **[Gazebo](/docs/03-gazebo)** - Simulation with Gazebo
-- **[ROS 2](/docs/04-ros2)** - Robot Operating System 2
-- **[Vision](/docs/05-vision)** - Computer Vision for Robots
-- **[Capstone](/docs/06-capstone)** - Capstone Project
+- **[Foundations](/docs/foundations)** - Physical AI Foundations
+- **[Robotics](/docs/robotics)** - Robotics Fundamentals
+- **[Gazebo](/docs/gazebo)** - Simulation with Gazebo
+- **[ROS 2](/docs/ros2)** - Robot Operating System 2
+- **[Vision](/docs/vision)** - Computer Vision for Robots
+- **[Capstone](/docs/capstone)** - Capstone Project
 
 ---
 
