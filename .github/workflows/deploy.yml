@@ -23,13 +23,14 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: cd physical-ai-book && npm ci --prefer-offline
+        run: cd physical-ai-book && npm ci
 
       - name: Verify docs folder
         run: ls -la physical-ai-book/docs/
 
       - name: Build static site
         run: cd physical-ai-book && npm run build
+        timeout-minutes: 30
 
       - name: Checkout gh-pages branch
         uses: actions/checkout@v4
