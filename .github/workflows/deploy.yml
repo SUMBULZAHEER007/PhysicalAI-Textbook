@@ -7,42 +7,35 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: 'physical-ai-book/package-lock.json'
 
       - name: Install dependencies
         run: |
           cd physical-ai-book
-          npm install
+          npm ci
 
       - name: Build Docusaurus site
         run: |
           cd physical-ai-book
           npm run build
 
-      - name: Upload build artifacts
-        uses: actions/upload-pages-artifact@v2
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: physical-ai-book/build
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./physical-ai-book/build
+          cname: false
