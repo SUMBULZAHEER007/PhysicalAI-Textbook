@@ -1,62 +1,42 @@
-name: Build and Deploy
+name: Deploy Docusaurus
 
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches:
+      - main
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Setup Node.js 18
+        
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: cd physical-ai-book && npm ci
+        run: npm install
 
-      - name: Verify docs folder
-        run: ls -la physical-ai-book/docs/
+      - name: Build website
+        run: npm run build
 
-      - name: Build static site
-        run: cd physical-ai-book && npm run build
-        timeout-minutes: 30
-
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          ref: gh-pages
-          path: gh-pages-dir
+          path: build
 
-      - name: Copy build to gh-pages
-        run: |
-          rm -rf gh-pages-dir/*
-          cp -r physical-ai-book/build/* gh-pages-dir/
-          cp physical-ai-book/build/.nojekyll gh-pages-dir/ || true
-          ls -la gh-pages-dir/docs/ || echo "No docs folder in build"
-
-      - name: Configure git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit and push to gh-pages
-        run: |
-          cd gh-pages-dir
-          git add -A
-          if git diff --quiet --cached; then
-            echo "No changes to commit"
-          else
-            git commit -m "Deploy from GitHub Actions"
-            git push
-          fi
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
