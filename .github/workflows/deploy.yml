@@ -52,4 +52,4 @@ jobs:
       # 6️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment # id zaroori hai environment url output ke liye
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
