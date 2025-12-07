@@ -1,42 +1,42 @@
-name: Deploy Docusaurus
+name: Deploy Physical AI Textbook
 
 on:
   push:
     branches:
-      - main
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+      - main  # workflow sirf main branch pe trigger hoga
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
 
+    steps:
+      # 1️⃣ Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '24.x'
+
+      # 3️⃣ Install dependencies
       - name: Install dependencies
+        working-directory: ./physical-ai-book
         run: npm install
 
-      - name: Build website
+      # 4️⃣ Build Docusaurus site
+      - name: Build site
+        working-directory: ./physical-ai-book
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # 5️⃣ Upload artifact for GitHub Pages
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: build
+          path: ./physical-ai-book/build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+      # 6️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
