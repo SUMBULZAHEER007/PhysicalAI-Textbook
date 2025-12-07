@@ -9,6 +9,18 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
+    # ✅ FIX: Yahan permissions block add karein
+    permissions:
+      contents: read
+      pages: write
+      id-token: write # Yeh zaroori hai 'Unable to get ID_TOKEN' error ke liye
+      
+    # 📝 NOTE: environment block bhi zaroori hai agar aapne Pages settings mein Environment use kiya hai
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
 
     steps:
       # 1️⃣ Checkout repo
@@ -39,4 +51,5 @@ jobs:
 
       # 6️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
+        id: deployment # id zaroori hai environment url output ke liye
         uses: actions/deploy-pages@v2
