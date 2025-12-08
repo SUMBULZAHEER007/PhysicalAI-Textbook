@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+// Step 1: ChatWidget import (Ensure file exists at src/components/ChatWidget/index.js)
 import ChatWidget from '@site/src/components/ChatWidget'; 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -17,11 +18,12 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Read the Textbook →
-          </Link>
+          {/* Path fixed to /docs/intro to match your file structure */}
+         <Link
+  className="button button--secondary button--lg"
+  to="/docs/intro"> 
+  Read the Textbook →
+</Link>
         </div>
       </div>
     </header>
@@ -33,10 +35,11 @@ export default function Home() {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Interactive Physical AI textbook with AI-native chatbot">
+      description="Interactive Physical AI AI-native textbook">
       <HomepageHeader />
       <main>
-        <div style={{ padding: '2rem 0', display: 'flex', justifyContent: 'center' }}>
+        {/* Is main section mein ab sirf chatbot aur padding dikhegi */}
+        <div style={{ padding: '4rem 0', display: 'flex', justifyContent: 'center' }}>
            <ChatWidget />
         </div>
       </main>

@@ -1,6 +1,7 @@
 ---
-slug: /
+id: intro
 title: Physical AI Textbook
+slug: /intro
 ---
 
 # Welcome to Physical AI Textbook
