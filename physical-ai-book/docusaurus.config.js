@@ -7,12 +7,15 @@ const config = {
   tagline: 'AI-native interactive textbook on Physical AI & Humanoid Robotics',
   favicon: 'img/favicon.ico',
 
-  url: 'https://sumbulzaheer007.github.io',
-  // LOCAL TESTING KE LIYE baseUrl '/' HONA CHAHIYE
-  baseUrl: '/', 
+  // 1. GitHub User URL
+  url: 'https://sumbulzaheer007.github.io', 
+  
+  // 2. IMPORTANT: Repository ka naam baseUrl mein hona chahiye deployment ke liye
+  baseUrl: '/PhysicalAI-Textbook/', 
 
   organizationName: 'SUMBULZAHEER007',
   projectName: 'PhysicalAI-Textbook',
+  trailingSlash: false,
 
   onBrokenLinks: 'warn',
 
@@ -23,7 +26,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          routeBasePath: 'docs', // Ensure docs are served from /docs/
+          routeBasePath: 'docs', // /docs/intro etc.
         },
         blog: false,
         theme: {
@@ -49,7 +52,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} Sumbul.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Sumbul Zaheer. AI-Native Physical AI Textbook.`,
       },
     }),
 };
