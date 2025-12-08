@@ -1,12 +1,5 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 import {themes as prismThemes} from 'prism-react-renderer';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -14,27 +7,18 @@ const config = {
   tagline: 'AI-native interactive textbook on Physical AI & Humanoid Robotics',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
   url: 'https://sumbulzaheer007.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/PhysicalAI-Textbook/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'SUMBULZAHEER007', // Usually your GitHub org/user name.
-  projectName: 'PhysicalAI-Textbook', // Usually your repo name.
+  organizationName: 'SUMBULZAHEER007',
+  projectName: 'PhysicalAI-Textbook',
 
   onBrokenLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -61,7 +45,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
         respectPrefersColorScheme: true,
@@ -90,25 +73,38 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Resources',
+            title: 'About the Author',
             items: [
               {
-                label: 'Chapters',
+                label: 'Connect on LinkedIn',
+                href: 'https://www.linkedin.com/in/sumbulzaheer001/', 
+              },
+            ],
+          },
+          {
+            title: 'Textbook Resources',
+            items: [
+              {
+                label: 'Introduction',
+                to: '/docs/intro',
+              },
+              {
+                label: 'Explore Chapters',
                 to: '/docs/',
               },
             ],
           },
           {
-            title: 'Project',
+            title: 'Project Links',
             items: [
               {
-                label: 'GitHub',
+                label: 'GitHub Repo',
                 href: 'https://github.com/SUMBULZAHEER007/PhysicalAI-Textbook',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Physical AI Textbook. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Sumbul. AI-Native Physical AI Textbook.`,
       },
       prism: {
         theme: prismThemes.github,

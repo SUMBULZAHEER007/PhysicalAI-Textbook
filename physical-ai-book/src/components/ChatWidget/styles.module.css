@@ -1,0 +1,64 @@
+.chatContainer {
+  max-width: 600px;
+  margin: 2rem auto;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--ifm-background-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.chatBox {
+  height: 300px;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.userMsg {
+  align-self: flex-end;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px 15px 0 15px;
+  max-width: 80%;
+}
+
+.aiMsg {
+  align-self: flex-start;
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+  padding: 8px 12px;
+  border-radius: 15px 15px 15px 0;
+  max-width: 80%;
+}
+
+.inputArea {
+  display: flex;
+  padding: 10px;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.chatInput {
+  flex: 1;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.sendBtn {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sendBtn:hover {
+  opacity: 0.9;
+}

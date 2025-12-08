@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import ChatWidget from '@site/src/components/ChatWidget'; // Import setup
 
 const FeatureList = [
   {
@@ -57,6 +58,15 @@ export default function HomepageFeatures() {
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
+        </div>
+        
+        {/* Chat Widget Section */}
+        <hr style={{ margin: '3rem 0', opacity: '0.2' }} />
+        <div className="row">
+          <div className="col col--12">
+            <Heading as="h2" className="text--center">Ask Physical AI</Heading>
+            <ChatWidget />
+          </div>
         </div>
       </div>
     </section>

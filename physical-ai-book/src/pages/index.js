@@ -1,9 +1,9 @@
+import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-
+import ChatWidget from '@site/src/components/ChatWidget'; 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
@@ -19,7 +19,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/foundations">
+            to="/docs/intro">
             Read the Textbook →
           </Link>
         </div>
@@ -33,10 +33,12 @@ export default function Home() {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Interactive Physical AI textbook with AI-native chatbot">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <div style={{ padding: '2rem 0', display: 'flex', justifyContent: 'center' }}>
+           <ChatWidget />
+        </div>
       </main>
     </Layout>
   );
