@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-capstone" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Capstone Project and System Integration | Physical AI Textbook</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/capstone"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Capstone Project and System Integration | Physical AI Textbook"><meta data-rh="true" name="description" content="Building a complete autonomous humanoid robot system"><meta data-rh="true" property="og:description" content="Building a complete autonomous humanoid robot system"><meta data-rh="true" name="keywords" content="capstone,integration,autonomous"><link data-rh="true" rel="canonical" href="https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/capstone"><link data-rh="true" rel="alternate" href="https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/capstone" hreflang="en"><link data-rh="true" rel="alternate" href="https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/capstone" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Capstone Project and System Integration","item":"https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/capstone"}]}</script><link rel="stylesheet" href="/PhysicalAI-Textbook/assets/css/styles.17307325.css">
+<script src="/PhysicalAI-Textbook/assets/js/runtime~main.84953a23.js" defer="defer"></script>
+<script src="/PhysicalAI-Textbook/assets/js/main.671676d0.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/PhysicalAI-Textbook/"><b class="navbar__title text--truncate">Physical AI Textbook</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/PhysicalAI-Textbook/docs/intro">Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/PhysicalAI-Textbook/docs/intro"><span title="intro" class="linkLabel_WmDU">intro</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/PhysicalAI-Textbook/docs/foundations"><span title="Textbook Chapters" class="categoryLinkLabel_W154">Textbook Chapters</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/foundations"><span title="Physical AI Foundations" class="linkLabel_WmDU">Physical AI Foundations</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/robotics"><span title="Humanoid Robot Design" class="linkLabel_WmDU">Humanoid Robot Design</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/gazebo"><span title="Robot Simulation with Gazebo" class="linkLabel_WmDU">Robot Simulation with Gazebo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/ros2"><span title="ROS 2 Middleware" class="linkLabel_WmDU">ROS 2 Middleware</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/vision"><span title="Robot Vision and Perception" class="linkLabel_WmDU">Robot Vision and Perception</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/PhysicalAI-Textbook/docs/capstone"><span title="Capstone Project and System Integration" class="linkLabel_WmDU">Capstone Project and System Integration</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/PhysicalAI-Textbook/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Textbook Chapters</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Capstone Project and System Integration</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Capstone Project: System Integration</h1></header>
+<p>This final module integrates all learned concepts into a complete autonomous robot system.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="project-overview">Project Overview<a href="#project-overview" class="hash-link" aria-label="Direct link to Project Overview" title="Direct link to Project Overview" translate="no">​</a></h2>
+<p>Build a humanoid robot system capable of:</p>
+<ol>
+<li class="">Perceiving objects in the environment</li>
+<li class="">Planning motion to reach and grasp objects</li>
+<li class="">Executing smooth coordinated motion</li>
+<li class="">Manipulating and placing objects</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="system-architecture">System Architecture<a href="#system-architecture" class="hash-link" aria-label="Direct link to System Architecture" title="Direct link to System Architecture" translate="no">​</a></h2>
+<p>The system consists of several integrated components:</p>
+<p><strong>Perception Module:</strong></p>
+<ul>
+<li class="">Captures images from camera</li>
+<li class="">Detects objects using deep learning</li>
+<li class="">Estimates 3D position from depth data</li>
+</ul>
+<p><strong>Planning Module:</strong></p>
+<ul>
+<li class="">Computes inverse kinematics</li>
+<li class="">Checks for collisions</li>
+<li class="">Generates smooth trajectories</li>
+</ul>
+<p><strong>Control Module:</strong></p>
+<ul>
+<li class="">Implements PID controllers for each joint</li>
+<li class="">Monitors joint feedback</li>
+<li class="">Adapts to deviations</li>
+</ul>
+<p><strong>Execution Module:</strong></p>
+<ul>
+<li class="">Sends commands to motors</li>
+<li class="">Operates gripper mechanism</li>
+<li class="">Monitors safety constraints</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="implementation-steps">Implementation Steps<a href="#implementation-steps" class="hash-link" aria-label="Direct link to Implementation Steps" title="Direct link to Implementation Steps" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-1-perceive-environment">Step 1: Perceive Environment<a href="#step-1-perceive-environment" class="hash-link" aria-label="Direct link to Step 1: Perceive Environment" title="Direct link to Step 1: Perceive Environment" translate="no">​</a></h3>
+<ul>
+<li class="">Subscribe to camera topics</li>
+<li class="">Run object detection model</li>
+<li class="">Publish detected objects</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-2-plan-motion">Step 2: Plan Motion<a href="#step-2-plan-motion" class="hash-link" aria-label="Direct link to Step 2: Plan Motion" title="Direct link to Step 2: Plan Motion" translate="no">​</a></h3>
+<ul>
+<li class="">Select target object</li>
+<li class="">Compute desired gripper pose</li>
+<li class="">Solve inverse kinematics</li>
+<li class="">Check collisions</li>
+<li class="">Generate trajectory</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-3-control-execution">Step 3: Control Execution<a href="#step-3-control-execution" class="hash-link" aria-label="Direct link to Step 3: Control Execution" title="Direct link to Step 3: Control Execution" translate="no">​</a></h3>
+<ul>
+<li class="">Send trajectory to controller</li>
+<li class="">Monitor joint angles</li>
+<li class="">Adjust based on feedback</li>
+<li class="">Maintain balance during motion</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-4-manipulate-object">Step 4: Manipulate Object<a href="#step-4-manipulate-object" class="hash-link" aria-label="Direct link to Step 4: Manipulate Object" title="Direct link to Step 4: Manipulate Object" translate="no">​</a></h3>
+<ul>
+<li class="">Move end-effector to grasp pose</li>
+<li class="">Close gripper</li>
+<li class="">Verify grasp using force feedback</li>
+<li class="">Retract to safe position</li>
+<li class="">Move to target location</li>
+<li class="">Open gripper</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="testing-strategy">Testing Strategy<a href="#testing-strategy" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h2>
+<ol>
+<li class="">Simulation: Test in Gazebo with perfect information</li>
+<li class="">Robustness: Add sensor noise and perturbations</li>
+<li class="">Hardware: Deploy to physical robot</li>
+<li class="">Validation: Test on diverse objects</li>
+<li class="">Optimization: Improve speed and reliability</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="expected-challenges">Expected Challenges<a href="#expected-challenges" class="hash-link" aria-label="Direct link to Expected Challenges" title="Direct link to Expected Challenges" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Perception Errors:</strong> Objects misdetected or occluded</li>
+<li class=""><strong>Unreachable Poses:</strong> No valid inverse kinematics solution</li>
+<li class=""><strong>Control Instability:</strong> Poorly tuned PID gains</li>
+<li class=""><strong>Grasp Failures:</strong> Weak grip or dropped objects</li>
+<li class=""><strong>Balance Loss:</strong> Instability during reaching motion</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="solutions-and-workarounds">Solutions and Workarounds<a href="#solutions-and-workarounds" class="hash-link" aria-label="Direct link to Solutions and Workarounds" title="Direct link to Solutions and Workarounds" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Multiple Sensors:</strong> Combine RGB camera, depth, force sensors</li>
+<li class=""><strong>Backup Plans:</strong> Alternative reach configurations</li>
+<li class=""><strong>Empirical Tuning:</strong> Carefully adjust controller parameters</li>
+<li class=""><strong>Tactile Feedback:</strong> Use force sensors for grasp confirmation</li>
+<li class=""><strong>CoM Monitoring:</strong> Check balance before each move</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="advanced-features">Advanced Features<a href="#advanced-features" class="hash-link" aria-label="Direct link to Advanced Features" title="Direct link to Advanced Features" translate="no">​</a></h2>
+<p>Once basic pick-and-place works:</p>
+<ul>
+<li class="">Machine Learning: Learn optimal grasping strategies</li>
+<li class="">Adaptation: Adjust to new object types</li>
+<li class="">Speed Optimization: Minimize cycle time</li>
+<li class="">Multi-step Tasks: Complex assembly operations</li>
+<li class="">Collaboration: Multiple robots working together</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="concepts-demonstrated">Concepts Demonstrated<a href="#concepts-demonstrated" class="hash-link" aria-label="Direct link to Concepts Demonstrated" title="Direct link to Concepts Demonstrated" translate="no">​</a></h2>
+<ul>
+<li class="">Forward and Inverse Kinematics</li>
+<li class="">Motion Planning and Trajectory Generation</li>
+<li class="">Feedback Control Systems</li>
+<li class="">Object Detection and Scene Understanding</li>
+<li class="">Real-time System Integration</li>
+<li class="">Hardware-Software Co-design</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="evaluation-metrics">Evaluation Metrics<a href="#evaluation-metrics" class="hash-link" aria-label="Direct link to Evaluation Metrics" title="Direct link to Evaluation Metrics" translate="no">​</a></h2>
+<ul>
+<li class="">Success Rate: Percentage of successful grasps</li>
+<li class="">Cycle Time: How fast each grasp/place completes</li>
+<li class="">Generalization: Works on unseen objects</li>
+<li class="">Robustness: Handles sensor noise and failures</li>
+<li class="">Safety: No collisions or excessive forces</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-insights">Key Insights<a href="#key-insights" class="hash-link" aria-label="Direct link to Key Insights" title="Direct link to Key Insights" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Integration is Hard:</strong> Combining multiple subsystems is more complex than individual components</li>
+<li class=""><strong>Real-time Requirements:</strong> Tight timing constraints difficult to meet</li>
+<li class=""><strong>Sensor Fusion:</strong> Multiple sensors needed for reliability</li>
+<li class=""><strong>Iterative Development:</strong> Testing and tuning are critical</li>
+<li class=""><strong>Hardware Matters:</strong> Simulation doesn&#x27;t capture all real-world effects</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="building-your-own-system">Building Your Own System<a href="#building-your-own-system" class="hash-link" aria-label="Direct link to Building Your Own System" title="Direct link to Building Your Own System" translate="no">​</a></h2>
+<p>To build a real robot system:</p>
+<ol>
+<li class="">Start with existing platform (Boston Dynamics, Tesla Bot)</li>
+<li class="">Customize perception for your task</li>
+<li class="">Implement planning and control</li>
+<li class="">Extensive testing and validation</li>
+<li class="">Deploy safely with proper safeguards</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="career-paths">Career Paths<a href="#career-paths" class="hash-link" aria-label="Direct link to Career Paths" title="Direct link to Career Paths" translate="no">​</a></h2>
+<p>Mastering this content opens careers in:</p>
+<ul>
+<li class="">Robotics Engineering</li>
+<li class="">AI and Autonomous Systems</li>
+<li class="">Robotics Research</li>
+<li class="">Robot Software Development</li>
+<li class="">Hardware-Software Integration</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="continuous-learning">Continuous Learning<a href="#continuous-learning" class="hash-link" aria-label="Direct link to Continuous Learning" title="Direct link to Continuous Learning" translate="no">​</a></h2>
+<ul>
+<li class="">Study advanced control theory (MPC, adaptive control)</li>
+<li class="">Explore learning from demonstration</li>
+<li class="">Implement simultaneous localization and mapping (SLAM)</li>
+<li class="">Work with real robot hardware</li>
+<li class="">Participate in robotics competitions</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="congratulations">Congratulations!<a href="#congratulations" class="hash-link" aria-label="Direct link to Congratulations!" title="Direct link to Congratulations!" translate="no">​</a></h2>
+<p>You have completed the Physical AI and Humanoid Robotics course covering:</p>
+<ul>
+<li class="">Foundations of embodied intelligence</li>
+<li class="">Robot design and control systems</li>
+<li class="">Simulation and digital twins</li>
+<li class="">Middleware and distributed systems</li>
+<li class="">Computer vision and perception</li>
+<li class="">System integration and capstone project</li>
+</ul>
+<p>You now have foundational knowledge to design, build, simulate, and deploy intelligent robotic systems.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="resources-for-continued-learning">Resources for Continued Learning<a href="#resources-for-continued-learning" class="hash-link" aria-label="Direct link to Resources for Continued Learning" title="Direct link to Resources for Continued Learning" translate="no">​</a></h2>
+<ul>
+<li class="">ROS 2 Official Documentation</li>
+<li class="">OpenCV and Computer Vision Libraries</li>
+<li class="">Deep Learning Frameworks (PyTorch, TensorFlow)</li>
+<li class="">Robot Platforms (UR robots, ABB, KUKA)</li>
+<li class="">Academic Papers and Conference Proceedings</li>
+</ul>
+<p>Keep learning, keep building, keep innovating in the exciting field of robotics!</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/PhysicalAI-Textbook/docs/vision"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Robot Vision and Perception</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#project-overview" class="table-of-contents__link toc-highlight">Project Overview</a></li><li><a href="#system-architecture" class="table-of-contents__link toc-highlight">System Architecture</a></li><li><a href="#implementation-steps" class="table-of-contents__link toc-highlight">Implementation Steps</a><ul><li><a href="#step-1-perceive-environment" class="table-of-contents__link toc-highlight">Step 1: Perceive Environment</a></li><li><a href="#step-2-plan-motion" class="table-of-contents__link toc-highlight">Step 2: Plan Motion</a></li><li><a href="#step-3-control-execution" class="table-of-contents__link toc-highlight">Step 3: Control Execution</a></li><li><a href="#step-4-manipulate-object" class="table-of-contents__link toc-highlight">Step 4: Manipulate Object</a></li></ul></li><li><a href="#testing-strategy" class="table-of-contents__link toc-highlight">Testing Strategy</a></li><li><a href="#expected-challenges" class="table-of-contents__link toc-highlight">Expected Challenges</a></li><li><a href="#solutions-and-workarounds" class="table-of-contents__link toc-highlight">Solutions and Workarounds</a></li><li><a href="#advanced-features" class="table-of-contents__link toc-highlight">Advanced Features</a></li><li><a href="#concepts-demonstrated" class="table-of-contents__link toc-highlight">Concepts Demonstrated</a></li><li><a href="#evaluation-metrics" class="table-of-contents__link toc-highlight">Evaluation Metrics</a></li><li><a href="#key-insights" class="table-of-contents__link toc-highlight">Key Insights</a></li><li><a href="#building-your-own-system" class="table-of-contents__link toc-highlight">Building Your Own System</a></li><li><a href="#career-paths" class="table-of-contents__link toc-highlight">Career Paths</a></li><li><a href="#continuous-learning" class="table-of-contents__link toc-highlight">Continuous Learning</a></li><li><a href="#congratulations" class="table-of-contents__link toc-highlight">Congratulations!</a></li><li><a href="#resources-for-continued-learning" class="table-of-contents__link toc-highlight">Resources for Continued Learning</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Sumbul Zaheer.</div></div></div></footer></div>
+</body>
+</html>

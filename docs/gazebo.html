@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-gazebo" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Robot Simulation with Gazebo | Physical AI Textbook</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/gazebo"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Robot Simulation with Gazebo | Physical AI Textbook"><meta data-rh="true" name="description" content="Building and simulating robots in Gazebo"><meta data-rh="true" property="og:description" content="Building and simulating robots in Gazebo"><meta data-rh="true" name="keywords" content="gazebo,simulation,urdf"><link data-rh="true" rel="canonical" href="https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/gazebo"><link data-rh="true" rel="alternate" href="https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/gazebo" hreflang="en"><link data-rh="true" rel="alternate" href="https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/gazebo" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Robot Simulation with Gazebo","item":"https://sumbulzaheer007.github.io/PhysicalAI-Textbook/docs/gazebo"}]}</script><link rel="stylesheet" href="/PhysicalAI-Textbook/assets/css/styles.17307325.css">
+<script src="/PhysicalAI-Textbook/assets/js/runtime~main.84953a23.js" defer="defer"></script>
+<script src="/PhysicalAI-Textbook/assets/js/main.671676d0.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/PhysicalAI-Textbook/"><b class="navbar__title text--truncate">Physical AI Textbook</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/PhysicalAI-Textbook/docs/intro">Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/PhysicalAI-Textbook/docs/intro"><span title="intro" class="linkLabel_WmDU">intro</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/PhysicalAI-Textbook/docs/foundations"><span title="Textbook Chapters" class="categoryLinkLabel_W154">Textbook Chapters</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/foundations"><span title="Physical AI Foundations" class="linkLabel_WmDU">Physical AI Foundations</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/robotics"><span title="Humanoid Robot Design" class="linkLabel_WmDU">Humanoid Robot Design</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/PhysicalAI-Textbook/docs/gazebo"><span title="Robot Simulation with Gazebo" class="linkLabel_WmDU">Robot Simulation with Gazebo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/ros2"><span title="ROS 2 Middleware" class="linkLabel_WmDU">ROS 2 Middleware</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/vision"><span title="Robot Vision and Perception" class="linkLabel_WmDU">Robot Vision and Perception</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/PhysicalAI-Textbook/docs/capstone"><span title="Capstone Project and System Integration" class="linkLabel_WmDU">Capstone Project and System Integration</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/PhysicalAI-Textbook/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Textbook Chapters</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Robot Simulation with Gazebo</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Robot Simulation with Gazebo</h1></header>
+<p>Gazebo is the industry-standard open-source robotics simulator providing realistic physics simulation, sensor simulation, and visualization.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-simulation">Why Simulation?<a href="#why-simulation" class="hash-link" aria-label="Direct link to Why Simulation?" title="Direct link to Why Simulation?" translate="no">​</a></h2>
+<ul>
+<li class="">Safety: Test dangerous behaviors safely</li>
+<li class="">Speed: Iterate faster than real hardware</li>
+<li class="">Cost: No risk of breaking expensive robots</li>
+<li class="">Scalability: Simulate multiple robots easily</li>
+<li class="">Reproducibility: Exact same conditions every time</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="urdf-format">URDF Format<a href="#urdf-format" class="hash-link" aria-label="Direct link to URDF Format" title="Direct link to URDF Format" translate="no">​</a></h2>
+<p>URDF (Unified Robot Description Format) is an XML-based format for specifying robot structure:</p>
+<ul>
+<li class="">Links: Rigid bodies with mass and inertia</li>
+<li class="">Joints: Connections between links (revolute, prismatic, fixed)</li>
+<li class="">Visual geometry: 3D meshes for display</li>
+<li class="">Collision geometry: Simplified shapes for physics</li>
+<li class="">Sensors: Cameras, lidar, force-torque sensors</li>
+</ul>
+<p>A URDF robot consists of:</p>
+<ul>
+<li class="">Base link (starting point)</li>
+<li class="">Connected child links via joints</li>
+<li class="">Inertia properties for physics</li>
+<li class="">Visual and collision models</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="physics-simulation">Physics Simulation<a href="#physics-simulation" class="hash-link" aria-label="Direct link to Physics Simulation" title="Direct link to Physics Simulation" translate="no">​</a></h2>
+<p>Gazebo uses Open Dynamics Engine (ODE) for physics:</p>
+<ul>
+<li class="">Simulates forces and torques</li>
+<li class="">Handles collisions between objects</li>
+<li class="">Computes joint constraints</li>
+<li class="">Update rate: 1000 Hz typical</li>
+<li class="">Gravity: -9.81 m/s²</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="sensor-simulation">Sensor Simulation<a href="#sensor-simulation" class="hash-link" aria-label="Direct link to Sensor Simulation" title="Direct link to Sensor Simulation" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="camera-simulation">Camera Simulation<a href="#camera-simulation" class="hash-link" aria-label="Direct link to Camera Simulation" title="Direct link to Camera Simulation" translate="no">​</a></h3>
+<p>Cameras in simulation:</p>
+<ul>
+<li class="">Horizontal FOV: 1.57 radians (90 degrees)</li>
+<li class="">Resolution: 640x480 or higher</li>
+<li class="">Output: RGB images like real cameras</li>
+<li class="">Update Rate: 30 Hz typical</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="lidar-simulation">Lidar Simulation<a href="#lidar-simulation" class="hash-link" aria-label="Direct link to Lidar Simulation" title="Direct link to Lidar Simulation" translate="no">​</a></h3>
+<p>Lidar sensors in simulation:</p>
+<ul>
+<li class="">Range: 0.1 to 30 meters</li>
+<li class="">Angular Resolution: 0.01 radians typical</li>
+<li class="">Output: Point cloud data</li>
+<li class="">Update Rate: 10 Hz typical</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="contact-simulation">Contact Simulation<a href="#contact-simulation" class="hash-link" aria-label="Direct link to Contact Simulation" title="Direct link to Contact Simulation" translate="no">​</a></h3>
+<p>Contact simulation between objects:</p>
+<ul>
+<li class="">Friction coefficient determines sliding behavior</li>
+<li class="">Restitution controls bounciness</li>
+<li class="">Normal impulses prevent penetration</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="simulation-advantages">Simulation Advantages<a href="#simulation-advantages" class="hash-link" aria-label="Direct link to Simulation Advantages" title="Direct link to Simulation Advantages" translate="no">​</a></h2>
+<ol>
+<li class="">Algorithm Testing: Validate control algorithms before hardware</li>
+<li class="">Learning: Safe environment for machine learning</li>
+<li class="">Parameter Tuning: Adjust parameters without breaking hardware</li>
+<li class="">Scenario Testing: Replay failures and edge cases</li>
+<li class="">Scaling: Test with many robots simultaneously</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="workflow-simulation-to-hardware">Workflow: Simulation to Hardware<a href="#workflow-simulation-to-hardware" class="hash-link" aria-label="Direct link to Workflow: Simulation to Hardware" title="Direct link to Workflow: Simulation to Hardware" translate="no">​</a></h2>
+<ol>
+<li class="">Develop in Gazebo simulation</li>
+<li class="">Test with realistic sensor noise</li>
+<li class="">Validate on real hardware with careful progression</li>
+<li class="">Tune parameters based on real-world results</li>
+<li class="">Deploy final algorithm</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limitations-of-simulation">Limitations of Simulation<a href="#limitations-of-simulation" class="hash-link" aria-label="Direct link to Limitations of Simulation" title="Direct link to Limitations of Simulation" translate="no">​</a></h2>
+<ul>
+<li class="">Physics approximations differ from reality</li>
+<li class="">Sensor noise may not match real sensors</li>
+<li class="">Material properties hard to model perfectly</li>
+<li class="">Lighting simulation complex</li>
+<li class="">Ground truth always available (cheating)</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="best-practices">Best Practices<a href="#best-practices" class="hash-link" aria-label="Direct link to Best Practices" title="Direct link to Best Practices" translate="no">​</a></h2>
+<ol>
+<li class="">Use realistic sensor models with noise</li>
+<li class="">Test with multiple random seeds</li>
+<li class="">Validate key assumptions on hardware early</li>
+<li class="">Don&#x27;t over-rely on perfect simulation data</li>
+<li class="">Keep model parameters up-to-date</li>
+</ol>
+<hr>
+<p><strong>Next:</strong> Learn about ROS 2 middleware for robot applications.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/PhysicalAI-Textbook/docs/robotics"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Humanoid Robot Design</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/PhysicalAI-Textbook/docs/ros2"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ROS 2 Middleware</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#why-simulation" class="table-of-contents__link toc-highlight">Why Simulation?</a></li><li><a href="#urdf-format" class="table-of-contents__link toc-highlight">URDF Format</a></li><li><a href="#physics-simulation" class="table-of-contents__link toc-highlight">Physics Simulation</a></li><li><a href="#sensor-simulation" class="table-of-contents__link toc-highlight">Sensor Simulation</a><ul><li><a href="#camera-simulation" class="table-of-contents__link toc-highlight">Camera Simulation</a></li><li><a href="#lidar-simulation" class="table-of-contents__link toc-highlight">Lidar Simulation</a></li><li><a href="#contact-simulation" class="table-of-contents__link toc-highlight">Contact Simulation</a></li></ul></li><li><a href="#simulation-advantages" class="table-of-contents__link toc-highlight">Simulation Advantages</a></li><li><a href="#workflow-simulation-to-hardware" class="table-of-contents__link toc-highlight">Workflow: Simulation to Hardware</a></li><li><a href="#limitations-of-simulation" class="table-of-contents__link toc-highlight">Limitations of Simulation</a></li><li><a href="#best-practices" class="table-of-contents__link toc-highlight">Best Practices</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Sumbul Zaheer.</div></div></div></footer></div>
+</body>
+</html>
